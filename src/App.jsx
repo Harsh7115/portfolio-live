@@ -1,29 +1,42 @@
+import ErrorBoundary from './components/ErrorBoundary'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import SignalStrip from './components/SignalStrip'
-import SelectedWork from './components/SelectedWork'
-import ExperienceTimeline from './components/ExperienceTimeline'
-import Projects from './components/Projects'
+import SelectedSystems from './components/SelectedSystems'
+import Timeline from './components/Timeline'
+import ProjectIndex from './components/ProjectIndex'
+import StackConsole from './components/StackConsole'
 import About from './components/About'
-import Skills from './components/Skills'
 import Footer from './components/Footer'
 
-function App() {
+export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <Navbar />
+    <div style={{ background: '#030303', minHeight: '100vh', overflowX: 'hidden', color: '#f8fafc' }}>
+      <ErrorBoundary>
+        <Navbar />
+      </ErrorBoundary>
       <main>
-        <Hero />
-        <SignalStrip />
-        <SelectedWork />
-        <ExperienceTimeline />
-        <Projects />
-        <About />
-        <Skills />
-        <Footer />
+        <ErrorBoundary>
+          <Hero />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <SelectedSystems />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Timeline />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <ProjectIndex />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <StackConsole />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <About />
+        </ErrorBoundary>
+        <ErrorBoundary>
+          <Footer />
+        </ErrorBoundary>
       </main>
     </div>
   )
 }
-
-export default App
