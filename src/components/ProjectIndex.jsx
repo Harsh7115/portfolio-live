@@ -41,7 +41,7 @@ function ProjectRow({ project, i }) {
       {/* Project name */}
       <span style={{
         flex: 1, paddingLeft: 14,
-        color: hovered ? '#f8fafc' : '#d4d4d8',
+        color: hovered ? '#ffffff' : '#e4e4e7',
         fontWeight: 500, fontSize: '0.85rem', letterSpacing: '-0.01em',
         fontFamily: 'monospace',
         transition: 'color 0.2s',

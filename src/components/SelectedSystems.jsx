@@ -161,7 +161,7 @@ function BentoCard({ item, index, style }) {
         {/* Right / Bottom section */}
         <div style={{ display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'flex-end' }}>
           <p style={{
-            color: '#a1a1aa',
+            color: '#b4b4b8',
             fontSize: featured ? 'clamp(0.82rem, 1vw, 0.92rem)' : '0.8rem',
             lineHeight: 1.75, fontWeight: 300,
             marginBottom: 14,

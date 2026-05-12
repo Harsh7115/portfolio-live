@@ -55,7 +55,7 @@ function TimelineEntry({ entry, index }) {
             {entry.dates}
           </span>
         </div>
-        <p style={{ fontSize: '0.86rem', color: '#a1a1aa', lineHeight: 1.75, fontWeight: 300 }}>
+        <p style={{ fontSize: '0.86rem', color: '#cbd5e1', lineHeight: 1.75, fontWeight: 300 }}>
           {entry.desc}
         </p>
       </div>
