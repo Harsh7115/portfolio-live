@@ -65,7 +65,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop links */}
-          <div className="hidden md:flex" style={{ gap: 2, alignItems: 'center', display: 'flex' }}>
+          <div className="hidden md:flex" style={{ gap: 2, alignItems: 'center' }}>
             {NAV_LINKS.map(({ label, href }) => (
               <button
                 key={label}
@@ -100,7 +100,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="flex md:hidden"
+            className="md:hidden"
             onClick={() => setMobileOpen(o => !o)}
             aria-label="Toggle menu"
             style={{

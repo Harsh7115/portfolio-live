@@ -105,7 +105,7 @@ export default function StackConsole() {
                 {group.items.map(item => (
                   <span key={item} style={{
                     fontFamily: 'monospace', fontSize: '0.72rem',
-                    color: '#d4d4d8',
+                    color: '#e4e4e7',
                     background: 'rgba(255,255,255,0.04)',
                     border: '1px solid rgba(255,255,255,0.08)',
                     padding: '3px 10px', borderRadius: 4,
