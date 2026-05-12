@@ -1,142 +1,113 @@
-export const nav = ['Work', 'Experience', 'Projects', 'About', 'Contact'];
-
 export const hero = {
-  name: 'Harsh Jain',
-  headline: 'Building AI systems that stay grounded, useful, and reliable.',
-  sub: "I'm a CS senior at the University of Arizona working across RAG systems, LLM evaluation, backend infrastructure, and automation-heavy enterprise workflows.",
-  pills: ['Graduating May 2026', 'Open to full-time roles', 'Arizona / open to relocation', '3.85 GPA'],
-  focusAreas: ['AI Systems', 'RAG + Evaluation', 'Backend APIs', 'Automation', 'Cloud + Infrastructure'],
+  headline: ['Building AI systems', 'that stay grounded.'],
+  sub: 'RAG, evaluation, backend infrastructure, and automation — built around real constraints, not demos.',
   links: {
     github: 'https://github.com/Harsh7115',
     linkedin: 'https://www.linkedin.com/in/-harshitjain/',
-    email: 'harshjain.cs.30@gmail.com',
-    resume: 'https://harsh7115.github.io/portfolio-live/Resume.pdf',
+    email: 'mailto:harshjain.cs.30@gmail.com',
+    resume: './Resume.pdf',
   },
-};
+}
 
-export const signals = [
-  { title: 'AI Systems', body: 'Textbook-grounded assistants, retrieval pipelines, evaluation harnesses.' },
-  { title: 'Backend', body: 'REST APIs, data models, infrastructure across Python, Go, Java, TypeScript.' },
-  { title: 'Automation', body: 'ServiceNow GRC, compliance workflows, SQL-driven reporting pipelines.' },
-  { title: 'Systems', body: 'OS, networking, distributed systems — C, C++, Go at the metal.' },
-];
-
-export const selectedWork = [
+export const systems = [
   {
     id: 'mcgrawhill',
-    role: 'AI Systems Engineer — POC',
-    org: 'University of Arizona × McGraw Hill',
+    label: 'Grounded AI · RAG',
+    title: 'UA × McGraw Hill',
+    subtitle: 'AI Systems Engineer — POC',
     dates: 'Jan 2026 – May 2026',
-    description: 'Controlled RAG-based GPT framework for textbook-grounded instructional assistants, with retrieval design, source-aware responses, content guardrails, and evaluation criteria to reduce hallucinations.',
+    desc: 'Controlled RAG-based GPT framework for textbook-grounded instructional assistants, with retrieval design, source-aware responses, content guardrails, and evaluation criteria to reduce hallucinations.',
     tags: ['RAG', 'LLM Systems', 'Retrieval', 'Guardrails', 'Evaluation'],
-    featured: true,
+    span: 'featured',
   },
   {
     id: 'awcim',
-    role: 'AI Solutions Developer',
-    org: 'Andrew Weil Center for Integrative Medicine',
-    dates: 'Aug 2025 – Nov 2025',
-    description: 'Built backend services for document ingestion, embeddings, API access, and RAG-based support around healthcare content, with emphasis on reliability, safety, and stakeholder testing.',
+    label: 'Healthcare AI · Backend',
+    title: 'Andrew Weil Center',
+    subtitle: 'AI Solutions Developer',
+    dates: 'Aug 2025 – Dec 2025',
+    desc: 'Built backend services for document ingestion, embeddings, API access, and RAG-based support around healthcare content, with emphasis on reliability, safety, and stakeholder testing.',
     tags: ['AWS', 'RAG', 'Backend', 'Embeddings', 'Healthcare AI'],
-    featured: true,
+    span: 'normal',
   },
   {
     id: 'handshake',
-    role: 'CS Fellow — AI Evaluation',
-    org: 'Handshake AI MOVE Program',
-    dates: 'Sep 2025 – Present',
-    description: 'Built reproducible Docker CI environments for AI agent benchmarking; authored fail-to-pass test suites and collaborated with engineering leads to refine prompt patterns and structured output formats.',
-    tags: ['LLM Evaluation', 'Docker', 'Prompt Engineering', 'AI Reliability'],
-    featured: false,
+    label: 'AI Evaluation',
+    title: 'Handshake AI MOVE',
+    subtitle: 'CS Fellow',
+    dates: 'Oct 2025 – Present',
+    desc: 'Evaluated AI-generated outputs, worked on instruction-following quality, prompt iteration, and structured feedback workflows for multimodal AI systems.',
+    tags: ['LLM Evaluation', 'Prompt Engineering', 'QA', 'AI Reliability'],
+    span: 'normal',
   },
   {
     id: 'grc',
-    role: 'GRC Business Analyst',
-    org: 'University of Arizona ITS',
+    label: 'Enterprise Automation',
+    title: 'UArizona IT Services',
+    subtitle: 'GRC Automation Analyst',
     dates: 'Sep 2023 – May 2026',
-    description: 'Automated compliance and risk workflows, built SQL-driven reporting pipelines, supported ServiceNow GRC processes, and improved documentation for recurring operational tasks.',
+    desc: 'Automated compliance and risk workflows, built SQL-driven reporting pipelines, supported ServiceNow GRC processes, and improved documentation for recurring operational tasks.',
     tags: ['ServiceNow', 'SQL', 'Automation', 'GRC', 'Reporting'],
-    featured: false,
+    span: 'normal',
   },
   {
     id: 'systems',
-    role: 'Systems Projects',
-    org: 'Personal / Academic',
-    dates: '2023 – 2026',
-    description: 'Operating system simulation, TCP proxy tooling, Unix shell, distributed key-value store, and backend/full-stack projects across C, Go, Java, Python, and TypeScript.',
+    label: 'Systems · Backend',
+    title: 'Systems Projects',
+    subtitle: 'C · Go · Python · TypeScript',
+    dates: '2024 – 2026',
+    desc: 'Operating system simulation, TCP proxy tooling, Unix shell, distributed key-value store, and backend/full-stack projects across C, Go, Java, Python, and TypeScript.',
     tags: ['C', 'Go', 'Networking', 'OS', 'Distributed Systems'],
-    featured: false,
+    span: 'wide',
   },
-];
+]
 
-export const experience = [
+export const timeline = [
   {
     role: 'AI Systems Engineer — POC',
     org: 'University of Arizona × McGraw Hill',
     dates: 'Jan 2026 – May 2026',
-    bullets: [
-      'Built production backend for a RAG-based AI assistant: document ingestion, retrieval pipeline, prompt routing, and GPT API integration.',
-      'Designed role-based access controls and retrieval scoping enabling instructors to configure assistants constrained to course materials.',
-      'Iterated on chunking and retrieval strategies to improve multi-step query accuracy and reduce hallucination risk.',
-    ],
+    desc: 'Working on a controlled RAG-based GPT framework for textbook-grounded instructional assistants, with retrieval design, guardrails, source-aware responses, and evaluation criteria.',
   },
   {
     role: 'CS Fellow — AI Evaluation & Prompt Engineering',
     org: 'Handshake AI MOVE Program',
-    dates: 'Sep 2025 – Present',
-    bullets: [
-      'Built reproducible Docker CI environments for automated testing of AI agent patches across diverse codebases.',
-      'Authored fail-to-pass test suites enabling automated patch validation; collaborated to refine prompt patterns and structured output formats.',
-    ],
+    dates: 'Oct 2025 – Present',
+    desc: 'Evaluating AI-generated outputs and refining instruction-following, prompt iteration, and structured feedback workflows for multimodal systems.',
   },
   {
-    role: 'Founding Engineer',
-    org: 'SkillfullyAware (SAAQ) App',
-    dates: 'Oct 2025 – Jan 2026',
-    bullets: [
-      'Led MVP backend from scratch: data models, service architecture, LLM API integrations, and vector retrieval.',
-      'Delivered features end-to-end across API, data layer, and system integrations.',
-    ],
-  },
-  {
-    role: 'AI Solutions Developer',
+    role: 'AI Solutions Developer — RAG Systems',
     org: 'Andrew Weil Center for Integrative Medicine',
-    dates: 'Aug 2025 – Nov 2025',
-    bullets: [
-      'Built modular backend services and document ingestion pipelines for AI-driven healthcare applications.',
-      'Integrated AWS (Lambda, S3) to support backend workflows; standardized API contracts across ingestion pipelines.',
-    ],
+    dates: 'Aug 2025 – Dec 2025',
+    desc: 'Built backend services for document ingestion, embeddings, API access, and RAG-supported healthcare content workflows with safety and reliability focus.',
   },
   {
-    role: 'GRC Business Analyst',
-    org: 'University of Arizona ITS',
+    role: 'GRC Automation Analyst',
+    org: 'University of Arizona IT Services',
     dates: 'Sep 2023 – May 2026',
-    bullets: [
-      'Automated compliance workflows with scripting and data pipelines, reducing manual effort across recurring audit processes.',
-      'Built reporting dashboards for audit-ready enterprise systems; partnered with compliance officers using ServiceNow GRC.',
-    ],
+    desc: 'Automating compliance workflows, SQL-driven reporting, ServiceNow GRC processes, and documentation for recurring operational tasks.',
   },
-];
+]
 
 export const projects = [
-  { title: 'Guardrail Auditor', year: 2026, category: 'Full-stack', desc: 'Full-stack LLM security auditing platform — risk-tiered verdicts, JSON/CSV exports, Prisma ORM, Neon Postgres, deployed on Vercel.', tags: ['TypeScript', 'Next.js', 'Prisma', 'AI Safety'], github: 'https://github.com/Harsh7115/guardrail-auditor', live: 'https://guardrail-auditor.vercel.app/' },
-  { title: 'go-distributed-kv', year: 2026, category: 'Systems', desc: 'Distributed key-value store with Raft consensus for leader election and log replication — linearizable reads, fault-tolerant writes.', tags: ['Go', 'Raft', 'gRPC', 'Docker'], github: 'https://github.com/Harsh7115' },
-  { title: 'Unix Shell', year: 2025, category: 'Systems', desc: 'POSIX-compatible shell with piping, redirection, background jobs, and signal handling in C.', tags: ['C', 'Systems', 'OS', 'Unix'], github: 'https://github.com/Harsh7115' },
-  { title: 'OS Simulation', year: 2025, category: 'Systems', desc: 'Operating system simulation covering scheduling, memory management, and process lifecycle in C.', tags: ['C', 'OS', 'Scheduling', 'Memory'], github: 'https://github.com/Harsh7115' },
-  { title: 'Mobile TCP Proxy Tool', year: 2025, category: 'Systems', desc: 'TCP proxy tool for mobile traffic interception, analysis, and routing across network layers.', tags: ['Networking', 'TCP', 'Python'], github: 'https://github.com/Harsh7115' },
-  { title: 'Java Personal Finance AI', year: 2025, category: 'Full-stack', desc: 'Modular finance platform with concurrent transaction processing, SQL persistence, and Python ML for automated expense categorization.', tags: ['Java', 'JavaFX', 'SQLite', 'Python ML', 'Jenkins'], github: 'https://github.com/Harsh7115' },
-  { title: 'JIRA-Inspired PM Tool', year: 2024, category: 'Full-stack', desc: 'Project management tool with ticket tracking, sprints, and role-based access — modeled after JIRA workflows.', tags: ['Java', 'OOP', 'MVC'], github: 'https://github.com/Harsh7115' },
-  { title: 'OneLiner Reddit Hackathon', year: 2024, category: 'Full-stack', desc: 'Hackathon project summarizing Reddit threads into single-line insights using NLP and the Reddit API.', tags: ['Python', 'NLP', 'API', 'Hackathon'], github: 'https://github.com/Harsh7115' },
-];
+  { title: 'go-distributed-kv', type: 'Systems', stack: 'Go · Distributed Systems', year: 2025, category: 'Systems', github: 'https://github.com/Harsh7115', desc: 'Distributed key-value store with systems-oriented design.' },
+  { title: 'unix-shell', type: 'Systems', stack: 'C · Unix · POSIX', year: 2025, category: 'Systems', github: 'https://github.com/Harsh7115', desc: 'Custom Unix shell implementation.' },
+  { title: 'OS Simulation', type: 'Systems', stack: 'C · USLOSS', year: 2025, category: 'Systems', github: 'https://github.com/Harsh7115', desc: 'OS simulation covering process, clock, and system-level behavior.' },
+  { title: 'Mobile TCP Proxy', type: 'Networking', stack: 'Python · Networking', year: 2025, category: 'Systems', github: 'https://github.com/Harsh7115', desc: 'TCP proxy tooling for packet-level and network behavior analysis.' },
+  { title: 'BudgetMasters', type: 'Full-stack', stack: 'JavaScript · SQL · Express', year: 2024, category: 'Full-stack', github: 'https://github.com/Harsh7115', desc: 'Personal finance and budgeting platform.' },
+  { title: 'Finance Management App', type: 'Full-stack', stack: 'Java · JavaFX · SQLite', year: 2024, category: 'Full-stack', github: 'https://github.com/Harsh7115', desc: 'Finance tracking application with structured data workflows.' },
+  { title: 'JIRA-Inspired PM Tool', type: 'Full-stack', stack: 'Java · OOP · MVC', year: 2024, category: 'Full-stack', github: 'https://github.com/Harsh7115', desc: 'Project management interface inspired by issue-tracking workflows.' },
+  { title: 'OneLiner Hackathon', type: 'Full-stack', stack: 'Python · NLP · Reddit API', year: 2024, category: 'Full-stack', github: 'https://github.com/Harsh7115', desc: 'Reddit thread summarizer distilling discussions into single-line insights.' },
+]
 
-export const skills = [
-  { cat: 'Languages', items: ['Python', 'Java', 'C', 'C++', 'Go', 'SQL', 'JavaScript', 'TypeScript'] },
-  { cat: 'AI / LLM', items: ['RAG', 'LangChain', 'Embeddings', 'FAISS', 'Prompt Engineering', 'LLM Evaluation', 'AWS Bedrock'] },
-  { cat: 'Backend / Data', items: ['REST APIs', 'Express', 'Django', 'PostgreSQL', 'SQLite', 'Redis', 'gRPC'] },
-  { cat: 'Cloud / Tools', items: ['AWS', 'Docker', 'Jenkins', 'GitHub Actions', 'Linux', 'Git', 'ServiceNow', 'Jira'] },
-];
+export const stack = [
+  { cat: 'Languages', prompt: 'languages', items: ['Python', 'Java', 'C', 'C++', 'SQL', 'JavaScript', 'TypeScript'] },
+  { cat: 'AI / LLM', prompt: 'ai_llm', items: ['RAG', 'LangChain', 'Embeddings', 'FAISS', 'Prompt Engineering', 'LLM Evaluation', 'AWS Bedrock'] },
+  { cat: 'Backend / Data', prompt: 'backend', items: ['REST APIs', 'Express', 'Django', 'PostgreSQL', 'SQLite', 'Redis'] },
+  { cat: 'Cloud / Tools', prompt: 'cloud', items: ['AWS', 'Docker', 'Jenkins', 'Linux', 'Git', 'ServiceNow', 'Jira', 'Confluence'] },
+]
 
 export const about = {
-  main: "I'm interested in systems that are useful under real constraints — AI tools that cite their sources, backend services that don't collapse under messy requirements, and automation that saves people from repetitive work. My work has moved across university research partnerships, healthcare-facing AI tooling, enterprise GRC automation, and systems-heavy CS projects.",
-  beyond: "Outside of software, I'm usually training, following geopolitics, or reading about human behavior and complex systems.",
-};
+  main: "I like building systems that work under messy real-world constraints — AI tools that cite sources, backend services that stay reliable, and automation that removes repetitive work.",
+  beyond: "Outside software, I'm usually training, following geopolitics, or reading about human behavior and complex systems.",
+}

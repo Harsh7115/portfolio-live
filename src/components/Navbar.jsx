@@ -1,146 +1,179 @@
 import { useState, useEffect } from 'react'
-import { nav } from '../data/portfolioData'
+import { motion, AnimatePresence } from 'framer-motion'
 import { X, Menu } from 'lucide-react'
 
-const sectionIds = {
-  Work: 'work',
-  Experience: 'experience',
-  Projects: 'projects',
-  About: 'about',
-  Contact: 'contact',
+const NAV_LINKS = [
+  { label: 'Work', href: 'work' },
+  { label: 'Experience', href: 'experience' },
+  { label: 'Projects', href: 'projects' },
+  { label: 'Stack', href: 'stack' },
+  { label: 'About', href: 'about' },
+]
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
 export default function Navbar() {
-  const [active, setActive] = useState('')
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    const observers = []
-    nav.forEach((item) => {
-      const id = sectionIds[item]
-      const el = document.getElementById(id)
-      if (!el) return
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(item)
-        },
-        { threshold: 0.2, rootMargin: '-80px 0px -60% 0px' }
-      )
-      observer.observe(el)
-      observers.push(observer)
-    })
-    return () => observers.forEach((o) => o.disconnect())
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleClick = (item) => {
-    const id = sectionIds[item]
-    const el = document.getElementById(id)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
-    setMenuOpen(false)
-  }
+  useEffect(() => {
+    if (mobileOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   return (
     <>
-      <nav
-        style={{
-          position: 'fixed',
-          top: '1rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 1000,
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          backgroundColor: 'rgba(28,27,22,0.82)',
-          border: '1px solid rgba(255,255,255,0.10)',
-          borderRadius: '9999px',
-          padding: '0.5rem 1.25rem',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.25rem',
-        }}
+      <motion.nav
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100 }}
       >
-        {/* Desktop nav */}
-        <div className="hidden sm:flex items-center gap-1">
-          {nav.map((item) => (
-            <button
-              key={item}
-              onClick={() => handleClick(item)}
-              style={{
-                fontSize: '0.8125rem',
-                fontWeight: 500,
-                padding: '0.3rem 0.75rem',
-                borderRadius: '9999px',
-                border: 'none',
-                background: active === item ? 'rgba(201,168,76,0.12)' : 'transparent',
-                color: active === item ? 'var(--accent)' : 'var(--text-muted)',
-                cursor: 'pointer',
-                transition: 'color 0.2s, background 0.2s',
-              }}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="sm:hidden"
-          onClick={() => setMenuOpen(true)}
-          style={{ color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-        >
-          <Menu size={18} />
-        </button>
-      </nav>
-
-      {/* Mobile fullscreen overlay */}
-      {menuOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 2000,
-            backgroundColor: 'rgba(17,17,16,0.97)',
-            backdropFilter: 'blur(16px)',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '2rem',
-          }}
-        >
-          <button
-            onClick={() => setMenuOpen(false)}
+        <div style={{
+          margin: scrolled ? '12px 20px' : '20px 24px',
+          background: scrolled ? 'rgba(3,3,3,0.9)' : 'rgba(3,3,3,0.25)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          border: `1px solid ${scrolled ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.04)'}`,
+          borderRadius: 12,
+          padding: '0 20px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          height: 52,
+          transition: 'all 0.35s ease',
+        }}>
+          <a
+            href="#"
+            onClick={e => { e.preventDefault(); scrollTo('hero') }}
             style={{
-              position: 'absolute',
-              top: '1.5rem',
-              right: '1.5rem',
-              background: 'none',
-              border: 'none',
-              color: 'var(--text-muted)',
-              cursor: 'pointer',
+              fontSize: '0.75rem', fontFamily: 'monospace', letterSpacing: '0.14em',
+              color: '#a5b4fc', textDecoration: 'none', fontWeight: 600,
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.color = '#c4b5fd' }}
+            onMouseLeave={e => { e.currentTarget.style.color = '#a5b4fc' }}
+          >
+            HJ
+          </a>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex" style={{ gap: 2, alignItems: 'center', display: 'flex' }}>
+            {NAV_LINKS.map(({ label, href }) => (
+              <button
+                key={label}
+                onClick={() => scrollTo(href)}
+                style={{
+                  fontSize: '0.68rem', fontFamily: 'monospace', letterSpacing: '0.06em',
+                  color: '#71717a', background: 'none', border: 'none',
+                  padding: '6px 12px', cursor: 'pointer', borderRadius: 6,
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#d4d4d8'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+                onMouseLeave={e => { e.currentTarget.style.color = '#71717a'; e.currentTarget.style.background = 'none' }}
+              >
+                {label}
+              </button>
+            ))}
+            <a
+              href="mailto:harshjain.cs.30@gmail.com"
+              style={{
+                fontSize: '0.68rem', fontFamily: 'monospace', letterSpacing: '0.08em',
+                color: '#a5b4fc', background: 'rgba(99,102,241,0.1)',
+                border: '1px solid rgba(99,102,241,0.3)',
+                padding: '6px 14px', borderRadius: 6,
+                textDecoration: 'none', marginLeft: 6, transition: 'all 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.2)'; e.currentTarget.style.borderColor = 'rgba(99,102,241,0.55)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(99,102,241,0.1)'; e.currentTarget.style.borderColor = 'rgba(99,102,241,0.3)' }}
+            >
+              Contact
+            </a>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="flex md:hidden"
+            onClick={() => setMobileOpen(o => !o)}
+            aria-label="Toggle menu"
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: '#71717a', padding: 4, display: 'flex', alignItems: 'center',
             }}
           >
-            <X size={24} />
+            <Menu size={18} />
           </button>
-          {nav.map((item) => (
+        </div>
+      </motion.nav>
+
+      {/* Mobile overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: 'fixed', inset: 0, zIndex: 200,
+              background: 'rgba(3,3,3,0.98)', backdropFilter: 'blur(20px)',
+              display: 'flex', flexDirection: 'column',
+              justifyContent: 'center', alignItems: 'center', gap: 6,
+            }}
+          >
             <button
-              key={item}
-              onClick={() => handleClick(item)}
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
               style={{
-                fontSize: '1.5rem',
-                fontWeight: 600,
-                color: active === item ? 'var(--accent)' : 'var(--text)',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                letterSpacing: '-0.02em',
+                position: 'absolute', top: 24, right: 28,
+                background: 'none', border: 'none', cursor: 'pointer',
+                color: '#71717a', padding: 8,
               }}
             >
-              {item}
+              <X size={20} />
             </button>
-          ))}
-        </div>
-      )}
+            {[...NAV_LINKS, { label: 'Contact', href: null, email: 'mailto:harshjain.cs.30@gmail.com' }].map(({ label, href, email }) => (
+              <motion.div
+                key={label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                {email ? (
+                  <a
+                    href={email}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-0.03em',
+                      color: '#a5b4fc', textDecoration: 'none', display: 'block',
+                      padding: '6px 24px', textAlign: 'center',
+                    }}
+                  >{label}</a>
+                ) : (
+                  <button
+                    onClick={() => { setMobileOpen(false); scrollTo(href) }}
+                    style={{
+                      fontSize: '1.8rem', fontWeight: 800, letterSpacing: '-0.03em',
+                      color: '#f8fafc', background: 'none', border: 'none',
+                      cursor: 'pointer', padding: '6px 24px', display: 'block',
+                      transition: 'color 0.2s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.color = '#a5b4fc' }}
+                    onMouseLeave={e => { e.currentTarget.style.color = '#f8fafc' }}
+                  >{label}</button>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
